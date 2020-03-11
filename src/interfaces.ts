@@ -33,3 +33,43 @@ showPicture({
     orientation: PhotoOrientation.Portrait,
     // extra: 'test'// Error
 });
+
+interface PictureConfig {
+    title?: string;
+    date?: string;
+    orientation?: PhotoOrientation
+}
+
+function generatePicture(config: PictureConfig) {
+    const pic = {title: 'Default', date: '2020-03'};
+    if(config.title) {
+        pic.title = config.title;
+    }
+    if(config.date) {
+        pic.date = config.date;
+    }
+
+    return pic;
+}
+
+let picture = generatePicture({});
+console.log('picture', picture);
+picture = generatePicture({title: 'Travel Pic'});
+console.log('picture', picture);
+picture = generatePicture({title: 'Travel Pic', date: '2021-05'});
+console.log('picture', picture);
+
+// Intefaz: Usuario
+interface User {
+    readonly id: number; // solo lectura
+    username: string;
+    isPro: boolean;
+}
+
+let user: User;
+user = {id: 10, username: 'luixaviles', isPro: true};
+console.log('user', user);
+user.username = 'paparazzi';
+// user.id = 20; //Error!
+console.log('user', user);
+
